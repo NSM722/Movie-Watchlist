@@ -1,5 +1,8 @@
 # Movie Watchlist
 
+<img width="70%" alt="Movie_Watchlist_bg" src="https://user-images.githubusercontent.com/83452606/215103002-f01c7659-a550-4547-881c-eb0c9f9022be.png">
+
+
 The site has two pages:
   - Search Page
   - Watchlist Page
