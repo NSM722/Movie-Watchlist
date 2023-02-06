@@ -36,33 +36,10 @@ function renderFilms() {
 		fetch(`https://www.omdbapi.com/?apikey=${key}&i=${film.imdbID}`)
 			.then(res => res.json())
 			.then(detailedFilm => {
-				filmsHtml += `
-                            <div class="film-wrapper">
-                                <img class="film-img" src="${film.Poster}" alt="${film.imdbID}">
-                                <div class="film-sub-wrapper">
-                                    <div class="sub-wrapper-header">
-                                        <h2 class="film-title">${detailedFilm.Title}</h2>
-                                        <p class="film-rating">⭐ ${detailedFilm.imdbRating}</p>
-                                    </div>
-                                    <div class="sub-wrapper-sub-header">
-                                        <p>${detailedFilm.Runtime}</p>
-                                        <p>${detailedFilm.Genre}</p>
-                                        <div class="sub-wrapper-select">
-                                            <button 
-                                                class="add-btn" 
-                                                id="add-btn"
-                                                data-add=${film.imdbID}>+</button>
-                                            <p>Watchlist</p>
-                                        </div>
-                                    </div>
-                                    <p class="sub-wrapper-body">${detailedFilm.Plot}</p>
-                                </div>
-                            </div>
-                        `
+				filmsHtml += generateHTML(detailedFilm, 'Watchlist', '+')
 				filmsContainer.innerHTML = filmsHtml
 				// empty the films array to render new search
 				films.length = 0;
-
 
 				// Adding films to the watchlist
 				let addButtons = document.querySelectorAll('.add-btn')
@@ -89,28 +66,41 @@ function renderWatchList() {
 
 	// parse the data stored in the local storage
 	Object.keys(localStorage).forEach(function (key) {
-		const film = JSON.parse(localStorage.getItem(key));
-		watchlistHtml += `
-            <div class="film-wrapper">
-                <img class="film-img" src="${film.Poster}" alt="${film.imdbID}">
-                <div class="film-sub-wrapper">
-                <div class="sub-wrapper-header">
-                    <h2 class="film-title">${film.Title}</h2>
-                    <p class="film-rating">⭐ ${film.imdbRating}</p>
-                </div>
-                <div class="sub-wrapper-sub-header">
-                                    <p>${film.Runtime}</p>
-                                    <p>${film.Genre}</p>
-                </div>
-                <p class="sub-wrapper-body">${film.Plot}</p>
-                </div>
-            </div>
-            `
+		const savedFilm = JSON.parse(localStorage.getItem(key));
+		watchlistHtml += generateHTML(savedFilm, 'Remove', '-')
 	})
 	if (document.querySelector(".watchlist-container")) {
 		document.querySelector(".watchlist-container").innerHTML += watchlistHtml
 	}
 }
+
+// generates HTML elements
+function generateHTML(pageInput, pageText, btnSymbol) {
+	return `
+					<div class="film-wrapper">
+							<img class="film-img" src="${pageInput.Poster}" alt="${pageInput.imdbID}">
+							<div class="film-sub-wrapper">
+							<div class="sub-wrapper-header">
+									<h2 class="film-title">${pageInput.Title}</h2>
+									<p class="film-rating">⭐ ${pageInput.imdbRating}</p>
+									<div class="sub-wrapper-select">
+											<button 
+													class="add-btn" 
+													id="add-btn"
+													data-add=${pageInput.imdbID}>${btnSymbol}</button>
+											<p>${pageText}</p>
+									</div>
+							</div>
+							<div class="sub-wrapper-sub-header">
+									<p>${pageInput.Runtime}</p>
+									<p>${pageInput.Genre}</p>
+							</div>
+							<p class="sub-wrapper-body">${pageInput.Plot}</p>
+							</div>
+					</div>
+					`
+}
+
 
 
 // call renderWatchlist in DOMContentLoaded event in both index.html & watchlist.html
