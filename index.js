@@ -4,16 +4,25 @@ const filmsContainer = document.getElementById('welcome-page')
 let inputEl = document.getElementById('search')
 let films = []
 
+// conditional statement prevents null error when switching to the watchlist.html page
 if (searchForm) {
+	// checking that the input element has a value or not
+	inputEl.addEventListener('input', () => {
+		inputEl.value ?
+			document.getElementById('search-btn').removeAttribute('disabled') :
+			document.getElementById('search-btn').setAttribute('disabled', true)
+	})
+
+	// add submit event and fetch list of movies
 	searchForm.addEventListener('submit', event => {
 		event.preventDefault()
-		getMovies()
+		getMovies(inputEl.value)
 		inputEl.value = ""
 	})
 }
 
-function getMovies() {
-	fetch(`https://www.omdbapi.com/?s=${inputEl.value}&apikey=${key}`)
+function getMovies(searchTerm) {
+	fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${key}`)
 		.then(res => res.json())
 		.then(data => {
 			// console.log(data)
@@ -64,6 +73,17 @@ function renderWatchList() {
 	if (document.querySelector(".watchlist-container")) {
 		document.querySelector(".watchlist-container").innerHTML = watchlistHtml
 	}
+	// removing films from the watchlist
+	let removeButtons = document.querySelectorAll('.remove-btn')
+	removeButtons.forEach(removeBtn => {
+		// console.log(removeBtn)
+		removeBtn.addEventListener('click', event => {
+			let removeFilmID = event.target.dataset.remove;
+			console.log('remove btn clicked', removeFilmID)
+			// localStorage.removeItem(removeFilmID)
+			Object.keys(localStorage).filter(id => id !== removeFilmID)
+		})
+	})
 }
 
 // generates HTML elements
