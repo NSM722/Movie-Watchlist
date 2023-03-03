@@ -51,6 +51,7 @@ function renderFilms(arr) {
 						localStorage.setItem(addedFilmID, JSON.stringify(addedFilm))
 					})
 				})
+				// empty the films array to render new search
 				searchResults.length = 0
 			})
 	})
@@ -72,7 +73,7 @@ function renderWatchList() {
 		removeBtn.addEventListener('click', event => {
 			let removeFilmID = event.target.dataset.remove;
 			localStorage.removeItem(removeFilmID)
-			// Remove the film HTML element from the page
+			// Remove the film first HTML element with the class 'film-wrapper' from the page
 			event.target.closest('.film-wrapper').remove()
 		})
 	})
