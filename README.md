@@ -23,5 +23,4 @@ This pages loads and displays data stored from the windows local storage
 ### Improvements
 App is still in development stages
  - code refactoring
- - Implement a function for removing movies from the watchlist page
  - Styling & Responsiveness
