@@ -97,7 +97,7 @@ function generateHTML(pageInput, btnAsideText, btnSymbol) {
 								<h2 class="film-title">${Title}</h2>
 								<p class="film-rating">⭐ ${imdbRating}</p>
 								<div class="sub-wrapper-select">
-									<button class="add-btn" id="add-btn" data-add=${imdbID}>${btnSymbol}</button>
+									<button class="add-btn" data-add=${imdbID}>${btnSymbol}</button>
 									<p>${btnAsideText}</p>
 								</div>
 							</div>
