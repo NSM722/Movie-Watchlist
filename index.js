@@ -2,7 +2,7 @@ const key = '2a297222'
 const searchForm = document.getElementById('search-form')
 const filmsContainer = document.getElementById('welcome-page')
 let inputEl = document.getElementById('search')
-let films = []
+let searchResults = []
 
 // conditional statement prevents null error when switching to the watchlist.html page
 if (searchForm) {
@@ -25,23 +25,21 @@ function getMovies(searchTerm) {
 	fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${key}`)
 		.then(res => res.json())
 		.then(data => {
-			// console.log(data)
 			data.Search.forEach(searchItem => {
-				films.push(searchItem)
+				searchResults.push(searchItem)
 			})
-			// console.log(films)
-			renderFilms(films)
+			renderFilms(searchResults)
 		}).catch(err => console.log(err))
 }
 
 function renderFilms(arr) {
 	let filmsHtml = ``
-	// console.log(films)
+	let detailedFilms = []
 	arr.forEach(film => {
 		fetch(`https://www.omdbapi.com/?apikey=${key}&i=${film.imdbID}`)
 			.then(res => res.json())
 			.then(detailedFilm => {
-				// console.log(detailedFilm)
+				detailedFilms.push(detailedFilm)
 				filmsHtml += generateHTML(detailedFilm, 'Watchlist', '+')
 				filmsContainer.innerHTML = filmsHtml
 				// Adding films to the watchlist
@@ -49,24 +47,19 @@ function renderFilms(arr) {
 				addButtons.forEach(addBtn => {
 					addBtn.addEventListener('click', event => {
 						let addedFilmID = event.target.dataset.add;
-						// Save added film to the local storage 
-						localStorage.setItem(addedFilmID, JSON.stringify(detailedFilm))
-						// console.log(`Button with id ${addedFilmID} was clicked` )
+						let addedFilm = detailedFilms.find(film => film.imdbID === addedFilmID)
+						localStorage.setItem(addedFilmID, JSON.stringify(addedFilm))
 					})
 				})
-				// empty the films array to render new search
-				films.length = 0;
+				searchResults.length = 0
 			})
 	})
 }
 
 function renderWatchList() {
-	// watch list html
 	let watchlistHtml = ``;
-
 	// parse the data stored in the local storage
 	Object.keys(localStorage).forEach(function (savedKey) {
-		// console.log(Object.keys(localStorage))
 		let savedFilm = JSON.parse(localStorage.getItem(savedKey));
 		watchlistHtml += generateHTML(savedFilm, 'Remove', '-')
 	})
@@ -76,12 +69,11 @@ function renderWatchList() {
 	// removing films from the watchlist
 	let removeButtons = document.querySelectorAll('.remove-btn')
 	removeButtons.forEach(removeBtn => {
-		// console.log(removeBtn)
 		removeBtn.addEventListener('click', event => {
 			let removeFilmID = event.target.dataset.remove;
-			console.log('remove btn clicked', removeFilmID)
-			// localStorage.removeItem(removeFilmID)
-			Object.keys(localStorage).filter(id => id !== removeFilmID)
+			localStorage.removeItem(removeFilmID)
+			// Remove the film HTML element from the page
+			event.target.closest('.film-wrapper').remove()
 		})
 	})
 }
@@ -89,6 +81,15 @@ function renderWatchList() {
 // generates HTML elements
 function generateHTML(pageInput, btnAsideText, btnSymbol) {
 	const { Poster, imdbID, Title, imdbRating, Runtime, Genre, Plot } = pageInput
+	let buttonDivEl = btnSymbol === '+' ?
+		`<div class="sub-wrapper-select">
+                        <button class="add-btn" data-add=${imdbID}>${btnSymbol}</button>
+                        <p>${btnAsideText}</p>
+                    </div>` :
+		`<div class="sub-wrapper-select">
+                        <button class="remove-btn" data-remove=${imdbID}>${btnSymbol}</button>
+                        <p>${btnAsideText}</p>
+                    </div>`
 	return `
 					<div class="film-wrapper">
 						<img class="film-img" src="${Poster}" alt="${imdbID}">
@@ -96,10 +97,7 @@ function generateHTML(pageInput, btnAsideText, btnSymbol) {
 							<div class="sub-wrapper-header">
 								<h2 class="film-title">${Title}</h2>
 								<p class="film-rating">⭐ ${imdbRating}</p>
-								<div class="sub-wrapper-select">
-									<button class="add-btn" data-add=${imdbID}>${btnSymbol}</button>
-									<p>${btnAsideText}</p>
-								</div>
+								${buttonDivEl}
 							</div>
 							<div class="sub-wrapper-sub-header">
 								<p>${Runtime}</p>
