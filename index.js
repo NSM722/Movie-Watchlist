@@ -58,7 +58,19 @@ function renderFilms(arr) {
 }
 
 function renderWatchList() {
-	let watchlistHtml = ``;
+	// renders default text if the localStorage is empty
+	let watchlistHtml = Object.keys(localStorage).length === 0 ?
+		`
+			<p class="watchlist-body">Your watchlist is looking a little empty...</p>
+			<div class="watchlist-empty">
+				<a href="index.html" >
+					<img src="images/add.icon.png"
+						class="add-icon-img"
+						alt="rounded icon with a plus sign that re-routes the user to the home page">
+				</a>
+				<p>Lets add some movies! </p>
+			</div>` :
+		``;
 	// parse the data stored in the local storage
 	Object.keys(localStorage).forEach(function (savedKey) {
 		let savedFilm = JSON.parse(localStorage.getItem(savedKey));
