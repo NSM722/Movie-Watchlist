@@ -160,11 +160,33 @@ h2 {
     width: 180px;
 }
 
-.welcome-page-body {
+.welcome-page-body,
+.watchlist-body {
     font-weight: 700;
     font-size: 1.5rem;
     color: #DFDDDD;
     margin-top: 0;
+}
+
+.watchlist-body {
+    margin-bottom: 0;
+}
+
+.watchlist-empty p {
+    color: #363636;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-left: 0.4em;
+}
+
+.watchlist-empty {
+    display: flex;
+    align-items: center;
+}
+
+.add-icon-img {
+    width: 27px;
+    height: 27px;
 }
 
 .film-wrapper {
