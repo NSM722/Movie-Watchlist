@@ -84,11 +84,11 @@ function generateHTML(pageInput, btnAsideText, btnSymbol) {
 	const { Poster, imdbID, Title, imdbRating, Runtime, Genre, Plot } = pageInput
 	let buttonDivEl = btnSymbol === '+' ?
 		`<div class="sub-wrapper-select">
-                        <button class="add-btn" data-add=${imdbID}>${btnSymbol}</button>
+                        <button aria-label="add film to watchlist" type="submit" class="add-btn" data-add=${imdbID}>${btnSymbol}</button>
                         <p>${btnAsideText}</p>
                     </div>` :
 		`<div class="sub-wrapper-select">
-                        <button class="remove-btn" data-remove=${imdbID}>${btnSymbol}</button>
+                        <button aria-label="remove film from watchlist" type="submit" class="remove-btn" data-remove=${imdbID}>${btnSymbol}</button>
                         <p>${btnAsideText}</p>
                     </div>`
 	return `
