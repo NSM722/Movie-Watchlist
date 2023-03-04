@@ -72,7 +72,8 @@ h2 {
 }
 
 .hero-title {
-    font-size: 1.5rem;
+    font-size: 2.7rem;
+    font-weight: 800;
     /* margin-top: 0; */
     margin-bottom: 0;
 }
@@ -101,7 +102,7 @@ h2 {
     /* https://www.freecodecamp.org/news/how-to-center-an-absolute-positioned-element/ */
     left: 0;
     right: 0;
-    top: 14.4em;
+    top: 16.9em;
     max-width: 100%;
     width: 90%;
     margin: auto;
@@ -115,9 +116,10 @@ h2 {
 .search-input {
     padding: 0.8em 0.8em;
     color: 9CA3AF;
+    font-size: 1.2rem;
     /* https://nikitahl.com/search-icon-inside-input */
     background: url("images/search-icon.png") no-repeat left;
-    margin: 0 .5em;
+    margin: 0 0 0 .5em;
     width: 60%;
 }
 
@@ -127,10 +129,19 @@ h2 {
     border-radius: 0px 6px 6px 0px;
     padding: 0.6em 0.7em 0.6em 1.1em;
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 1.2rem;
     color: #374151;
     cursor: pointer;
-    width: 30%;
+    width: 38%;
+}
+
+.search-btn:disabled {
+    cursor: not-allowed;
+}
+
+.search-btn:not(:disabled):hover,
+.search-btn:not(:disabled):focus {
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7);
 }
 
 /* MAIN WELCOME BODY BEFORE SEARCH */
@@ -146,13 +157,14 @@ h2 {
 }
 
 .welcome-page-bg {
-    width: 30%;
+    width: 180px;
 }
 
 .welcome-page-body {
-    font-weight: 700px;
-    font-size: 1.3rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     color: #DFDDDD;
+    margin-top: 0;
 }
 
 .film-wrapper {
@@ -162,11 +174,14 @@ h2 {
     gap: 2em;
     width: 100%;
     height: 300px;
+    border-bottom: 1.5px solid #E5E7EB;
 }
 
 .film-img {
     background-color: #454549;
-    width: 18%;
+    max-width: 165px;
+    margin-bottom: 1.3em;
+
 }
 
 .film-sub-wrapper {
@@ -189,9 +204,13 @@ h2 {
     /* justify-content: space-around; */
 }
 
-.add-btn {
+.add-btn,
+.remove-btn {
     border-radius: 50%;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    background-color: #111827;
+    color: #F9FAFB;
 }
