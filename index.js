@@ -29,7 +29,11 @@ function getMovies(searchTerm) {
 				searchResults.push(searchItem)
 			})
 			renderFilms(searchResults)
-		}).catch(err => console.log(err))
+		}).catch(err => {
+			console.log(err)
+			// if data is empty the following message is displayed to the user
+			filmsContainer.innerHTML = `<p class="welcome-page-body">Unable to find what you’re looking for. <br>Please try another search.</p>`
+		})
 }
 
 function renderFilms(arr) {
