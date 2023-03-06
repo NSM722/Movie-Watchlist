@@ -4,9 +4,7 @@ const filmsContainer = document.getElementById('welcome-page')
 let inputEl = document.getElementById('search')
 let searchResults = []
 
-// conditional statement prevents null error when switching to the watchlist.html page
 if (searchForm) {
-	// checking that the input element has a value or not
 	inputEl.addEventListener('input', () => {
 		inputEl.value ?
 			document.getElementById('search-btn').removeAttribute('disabled') :
@@ -89,7 +87,7 @@ function renderWatchList() {
 		removeBtn.addEventListener('click', event => {
 			let removeFilmID = event.target.dataset.remove;
 			localStorage.removeItem(removeFilmID)
-			// Remove the film first HTML element with the class 'film-wrapper' from the page
+			// Remove the film from the page when the first HTML element with the class 'film-wrapper' is found
 			event.target.closest('.film-wrapper').remove()
 		})
 	})
