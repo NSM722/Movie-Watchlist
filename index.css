@@ -236,3 +236,16 @@ h2 {
     background-color: #111827;
     color: #F9FAFB;
 }
+
+.add-btn:active,
+.remove-btn:active {
+    transform: translate(0.8px, 0.8px);
+}
+
+.add-btn:active,
+.add-btn:hover,
+.remove-btn:active,
+.remove-btn:hover {
+    color: #FDFF00;
+    background-color: #3330E4;
+}
