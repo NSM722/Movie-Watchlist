@@ -24,6 +24,8 @@ This pages loads and displays data stored from the windows local storage
 
 ## Misc
 
+Used [axe DevTools](https://deque.com/axe/devtools/ "Read docs") to run accessibilty tests
+
 **This line of code ensures that when the window loads, the renderWatchlist function will be invoked in both index.html & watchlist.html without throwing an error**
 ```javascript
 window.onload = () => {
