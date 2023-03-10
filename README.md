@@ -24,7 +24,9 @@ This pages loads and displays data stored from the windows local storage
 
 ## Misc
 
-Used [axe DevTools](https://deque.com/axe/devtools/ "Read docs") to run accessibilty tests
+Used [axe DevTools](https://deque.com/axe/devtools/ "Read docs") & [Accessibility Insights for Web](https://accessibilityinsights.io/docs/web/overview/ "Read docs") plugins to run accessibilty tests
+
+Here is another great tool for checking [Color Contrast Ratio](https://contrast-ratio.com/ "Try the live demo")
 
 **This line of code ensures that when the window loads, the renderWatchlist function will be invoked in both index.html & watchlist.html without throwing an error**
 ```javascript
