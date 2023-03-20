@@ -59,3 +59,6 @@ if (searchForm) {
 [How to create a search icon inside input box with HTML and CSS](https://nikitahl.com/search-icon-inside-input "Read More")
 
 [How to center an absolute positioned element vertically and horizontally with CSS](https://www.freecodecamp.org/news/how-to-center-an-absolute-positioned-element/ "Read More")
+
+#### Improvements
+Still under development as its only suitable for use in medium to large screens
