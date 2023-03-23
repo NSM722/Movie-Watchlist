@@ -19,6 +19,7 @@ body {
 /* IMAGES */
 img {
     max-width: 100%;
+		width: 165px;
     object-fit: cover;
 }
 
@@ -114,10 +115,102 @@ button {
     box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7);
 }
 
+
 /*
-  Medium to Large Screens 
+  Media Queries
 */
-@media (min-width:48em) {
+@media (max-width: 37.625em) {
+	.film-wrapper {
+		font-size: .7rem;
+	}
+}
+
+@media (max-width: 42.5em) {
+	.film-wrapper {
+		font-size: .83rem;
+	}
+}
+
+
+@media (max-width: 48.875em) {
+		.search-input {
+			width: 57%;
+		}
+
+		.search-btn {
+			width: 32%;
+		}
+
+		.welcome-page, 
+		.watchlist-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1em;
+			margin: 4em 0em;
+			max-width: 100%;
+		}
+
+    .film-wrapper {
+			margin: 3em 0em;
+			display: flex;
+			gap: 2em;
+			width: 100%;
+			height: 300px;
+			border-bottom: 1.5px solid #E5E7EB;
+		}
+		.film-img {
+			background-color: #454549;
+			/* max-width: 165px; */
+			margin-bottom: 1.3em;
+
+	}
+
+	.film-sub-wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+	}
+
+	.sub-wrapper-header,
+	.sub-wrapper-sub-header {
+			display: flex;
+			align-items: center;
+			gap: 1em;
+	}
+
+	.sub-wrapper-select {
+			display: flex;
+			align-items: center;
+			gap: 1em;
+	}
+
+	.add-btn,
+	.remove-btn {
+			border-radius: 50%;
+			cursor: pointer;
+			width: 28px;
+			height: 28px;
+			font-size: 1rem;
+			background-color: #111827;
+			color: #F9FAFB;
+	}
+
+	.add-btn:active,
+	.remove-btn:active {
+			transform: translate(0.8px, 0.8px);
+	}
+
+	.add-btn:active,
+	.add-btn:hover,
+	.remove-btn:active,
+	.remove-btn:hover {
+			color: #FDFF00;
+			background-color: #3330E4;
+	}
+}
+
+@media (min-width:48.9375em) {
 
     /* Large screen  2.6875em*/
     h1 {
@@ -126,7 +219,8 @@ button {
 
     h2 {
         font-weight: 700;
-        font-size: .975rem;
+				font-size: 1.5rem;
+        /* font-size: .975rem; */
     }
 
     /* Large screen  0.875em*/
@@ -181,7 +275,8 @@ button {
     }
 
     .film-wrapper {
-        margin: 1em 0em;
+        /* margin: .8em 0em; */
+				margin: 0;
         display: flex;
         gap: 2em;
         width: 100%;
@@ -191,7 +286,7 @@ button {
 
     .film-img {
         background-color: #454549;
-        max-width: 165px;
+        /* max-width: 165px; */
         margin-bottom: 1.3em;
 
     }
