@@ -1,0 +1,342 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html,
+body {  
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* IMAGES */
+img {
+    max-width: 100%;
+		width: 165px;
+    object-fit: cover;
+}
+
+input,
+button {
+    font: inherit;
+    border: none;
+}
+
+.container {
+    max-width: 100%;
+    width: 85%;
+    margin: 0 auto;
+}
+
+/* HEADER */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: {
+      color: #454549;
+      image: url('../images/hero.png');
+      repeat: no-repeat;
+      size: cover;
+      position: center;
+    }
+    padding: 5em 2em;
+    filter: contrast(1.50);
+    .hero-title {
+      font: {
+        size: 2.7rem;
+        weight: 800;
+      }
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 0;
+    }
+    .hero-link {
+      text-decoration: none;
+    }
+}
+
+.hero,
+.hero-link {
+    color: #FFFFFF;
+}
+
+/* Form */
+.search-form {
+    padding: 0px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16.9em;
+    max-width: 100%;
+    width: 90%;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    .search-input {
+        padding: 0.8em 0.8em;
+        color: #9CA3AF;
+        font-size: 1.2rem;
+        background: url("../images/search-icon.png") no-repeat left;
+        margin: 0 0 0 .5em;
+        width: 60%;
+    }
+    
+    .search-btn {
+        background: #F9FAFB;
+        border: {
+          left: 1px solid #D1D5DB;
+          radius: 0px 6px 6px 0px;
+        }
+        padding: 0.6em 0.7em 0.6em 1.1em;
+        font: {
+          weight: 500;
+          size: 1.2rem;
+        }
+        color: #374151;
+        cursor: pointer;
+        width: 38%;
+        &:disabled {
+            cursor: not-allowed;
+        }
+        
+        &:not(:disabled):hover,
+        &:not(:disabled):focus {
+            box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7);
+        }
+    }
+}
+
+
+
+
+
+/*
+  Media Queries
+*/
+@media (max-width: 37.625em) {
+	.film-wrapper {
+		font-size: .7rem;
+	}
+}
+
+@media (max-width: 42.5em) {
+	.film-wrapper {
+		font-size: .83rem;
+	}
+}
+
+
+@media (max-width: 48.875em) {
+		.search-input {
+			width: 57%;
+		}
+
+		.search-btn {
+			width: 32%;
+		}
+
+		.welcome-page, 
+		.watchlist-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1em;
+			margin: 4em 0em;
+			max-width: 100%;
+		}
+
+    .film-wrapper {
+			margin: 3em 0em;
+			display: flex;
+			gap: 2em;
+			width: 100%;
+			height: 300px;
+			border-bottom: 1.5px solid #E5E7EB;
+      .film-img {
+        background-color: #454549;
+        /* max-width: 165px; */
+        margin-bottom: 1.3em;
+      }
+      .film-sub-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .sub-wrapper-header,
+          .sub-wrapper-sub-header {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+          }
+      }
+		}
+
+	.sub-wrapper-select {
+			display: flex;
+			align-items: center;
+			gap: 1em;
+	}
+
+	.add-btn,
+	.remove-btn {
+			border-radius: 50%;
+			cursor: pointer;
+			width: 28px;
+			height: 28px;
+			font-size: 1rem;
+			background-color: #111827;
+			color: #F9FAFB;
+	}
+
+	.add-btn:active,
+	.remove-btn:active {
+			transform: translate(0.8px, 0.8px);
+	}
+
+	.add-btn:active,
+	.add-btn:hover,
+	.remove-btn:active,
+	.remove-btn:hover {
+			color: #FDFF00;
+			background-color: #3330E4;
+	}
+}
+
+@media (min-width:48.9375em) {
+
+    /* Large screen  2.6875em*/
+    h1 {
+        font-weight: 800;
+    }
+
+    h2 {
+        font: {
+          weight: 700;
+          size: 1.5rem;
+        }
+        /* font-size: .975rem; */
+    }
+
+    /* Large screen  0.875em*/
+    .hero-link {
+        font: {
+          weight: 500;
+          size: 1.125rem;
+        }
+    }
+
+    /* MAIN WELCOME BODY BEFORE SEARCH */
+    .welcome-page,
+    .watchlist-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        margin: 4em 0em;
+        max-width: 100%;
+
+    }
+
+    .welcome-page-bg {
+        width: 180px;
+    }
+
+    .welcome-page-body,
+    .watchlist-body {
+        font: {
+          weight: 700;
+          size: 1.5rem;
+        }
+        color: #444444;
+        margin-top: 0;
+    }
+
+    .watchlist-body {
+        margin-bottom: 0;
+    }
+
+    
+    .watchlist-empty {
+      display: flex;
+      align-items: center;
+      p {
+        color: #363636;
+        margin-left: 0.4em;
+        font: {
+          weight: 700;
+          size: 1.4rem;
+        }
+      }
+    }
+
+    .add-icon-img {
+        width: 27px;
+        height: 27px;
+    }
+
+    .film-wrapper {
+        /* margin: .8em 0em; */
+				margin: 0;
+        display: flex;
+        gap: 2em;
+        width: 100%;
+        height: 300px;
+        border-bottom: 1.5px solid #E5E7EB;
+        .film-img {
+            background-color: #454549;
+            /* max-width: 165px; */
+            margin-bottom: 1.3em;
+        }
+        .film-sub-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .sub-wrapper-header,
+            .sub-wrapper-sub-header {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+            }
+        }
+    }
+
+    .sub-wrapper-select {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .add-btn,
+    .remove-btn {
+        border-radius: 50%;
+        cursor: pointer;
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+        background-color: #111827;
+        color: #F9FAFB;
+    }
+
+    .add-btn:active,
+    .remove-btn:active {
+        transform: translate(0.8px, 0.8px);
+    }
+
+    .add-btn:active,
+    .add-btn:hover,
+    .remove-btn:active,
+    .remove-btn:hover {
+        color: #FDFF00;
+        background-color: #3330E4;
+    }
+}
