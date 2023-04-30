@@ -1,4 +1,7 @@
 @import './partials/colors';
+@import './partials/reset';
+@import './partials/dimensions';
+@import './partials/fontWeight';
 
 *,
 ::after,
@@ -8,33 +11,33 @@
 
 html,
 body {  
-    margin: 0;
-    padding: 0;
+    margin: $margin-zero;
+    padding: $padding-zero;
 }
 
 body {
-    min-height: 100vh;
+    min-height: $min-h-100;
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    line-height: $line-height;
 }
 
 /* IMAGES */
 img {
-    max-width: 100%;
-		width: 165px;
+    max-width: $max-w-100;
+		width: $img-fixed-width;
     object-fit: cover;
 }
 
 input,
 button {
     font: inherit;
-    border: none;
+    border: $none;
 }
 
 .container {
-    max-width: 100%;
-    width: 85%;
-    margin: 0 auto;
+    max-width: $max-w-100;
+    width: $container-w;
+    margin: $margin-zero $auto;
 }
 
 /* HEADER */
@@ -49,20 +52,20 @@ button {
       size: cover;
       position: center;
     }
-    padding: 5em 2em;
+    padding: $hero-padding-y $hero-padding-x;
     filter: contrast(1.50);
     .hero-title {
       font: {
         size: 2.7rem;
-        weight: 800;
+        weight: $fw-800;
       }
-      margin-bottom: 0;
+      margin-bottom: $margin-zero;
     }
     p {
-      margin-top: 0;
+      margin-top: $margin-zero;
     }
     .hero-link {
-      text-decoration: none;
+      text-decoration: $none;
     }
 }
 
@@ -73,41 +76,41 @@ button {
 
 /* Form */
 .search-form {
-    padding: 0px;
+    padding: $padding-zero;
     position: absolute;
     left: 0;
     right: 0;
     top: 16.9em;
-    max-width: 100%;
-    width: 90%;
-    margin: auto;
+    max-width: $max-w-100;
+    width: $form-w;
+    margin: $auto;
     background: $form-bg;
     border: 1px solid $form-border;
     box-shadow: 0px 1px 2px $box-shadow;
-    border-radius: 6px;
+    border-radius: $radius-fixed;
     .search-input {
-        padding: 0.8em 0.8em;
+        padding: $input-padding;
         color: $input-text;
         font-size: 1.2rem;
         background: url("../images/search-icon.png") no-repeat left;
         margin: 0 0 0 .5em;
-        width: 60%;
+        width: $input-w;
     }
     
     .search-btn {
         background: $btn-text;
         border: {
           left: 1px solid $form-border;
-          radius: 0px 6px 6px 0px;
+          radius: 0px $radius-fixed $radius-fixed 0px;
         }
-        padding: 0.6em 0.7em 0.6em 1.1em;
+        padding: $search-btn-padding-y $search-btn-padding-r $search-btn-padding-y $search-btn-padding-l;
         font: {
-          weight: 500;
+          weight: $fw-500;
           size: 1.2rem;
         }
         color: $search-btn-text;
         cursor: pointer;
-        width: 38%;
+        width: $search-btn-w;
         &:disabled {
             cursor: not-allowed;
         }
@@ -125,7 +128,11 @@ button {
 .remove-btn:hover {
     color: $btn-active-text;
     background-color: $btn-active-bg;
-    transform: translate(0.8px, 0.8px);
+}
+
+.add-btn:active,
+.remove-btn:active {
+  transform: translate(0.8px, 1.4px);
 }
 
 /*
@@ -207,19 +214,19 @@ button {
 
 @media (min-width:48.9375em) {
     h1 {
-        font-weight: 800;
+        font-weight: $fw-500;
     }
 
     h2 {
         font: {
-          weight: 700;
+          weight: $fw-700;
           size: 1.5rem;
         }
     }
 
     .hero-link {
         font: {
-          weight: 500;
+          weight: $fw-500;
           size: 1.125rem;
         }
     }
@@ -232,7 +239,7 @@ button {
         align-items: center;
         gap: 1em;
         margin: 4em 0em;
-        max-width: 100%;
+        max-width: $max-w-100;
 
     }
 
@@ -243,15 +250,15 @@ button {
     .welcome-page-body,
     .watchlist-body {
         font: {
-          weight: 700;
+          weight: $fw-700;
           size: 1.5rem;
         }
         color: $pages-text;
-        margin-top: 0;
+        margin-top: $margin-zero;
     }
 
     .watchlist-body {
-        margin-bottom: 0;
+        margin-bottom: $margin-zero;
     }
 
     
@@ -262,7 +269,7 @@ button {
         color: $watchlist-text;
         margin-left: 0.4em;
         font: {
-          weight: 700;
+          weight: $fw-700;
           size: 1.4rem;
         }
       }
@@ -274,10 +281,10 @@ button {
     }
 
     .film-wrapper {
-				margin: 0;
+				margin: $margin-zero;
         display: flex;
         gap: 2em;
-        width: 100%;
+        width: $max-w-100;
         height: 300px;
         border-bottom: 1.5px solid $film-wrapper-border;
         .film-img {
