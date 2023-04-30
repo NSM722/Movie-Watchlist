@@ -68,7 +68,7 @@ button {
 
 /* Form */
 .search-form {
-  padding: 0px;
+  padding: 0;
   position: absolute;
   left: 0;
   right: 0;
@@ -82,7 +82,7 @@ button {
   border-radius: 6px;
 }
 .search-form .search-input {
-  padding: 0.8em 0.8em;
+  padding: 0.8em;
   color: #9CA3AF;
   font-size: 1.2rem;
   background: url("../images/search-icon.png") no-repeat left;
@@ -113,7 +113,11 @@ button {
 .remove-btn:hover {
   color: #FDFF00;
   background-color: #3330E4;
-  transform: translate(0.8px, 0.8px);
+}
+
+.add-btn:active,
+.remove-btn:active {
+  transform: translate(0.8px, 1.4px);
 }
 
 /*
@@ -186,7 +190,7 @@ button {
 }
 @media (min-width: 48.9375em) {
   h1 {
-    font-weight: 800;
+    font-weight: 500;
   }
   h2 {
     font-weight: 700;
